@@ -33,12 +33,16 @@ class SimpleImageFilterWorkflow(BaseWidget):
 
 		self.__load_default_flows()
 
+		self.load_order = ['_defaultflows', ]
+
 		self._imgfilters.selectEntireRow 	= True
 		self._blobsfilters.selectEntireRow 	= True
 		self._defaultflows.changed 			= self.__defaultflows_changed_evt
 		self._player.processFrame 			= self.__process_frame
 		self.filename 						= video
 
+	def initForm(self):
+		super(SimpleImageFilterWorkflow,self).initForm()
 
 	###########################################################################
 	### IO FUNCTIONS ##########################################################
@@ -55,13 +59,14 @@ class SimpleImageFilterWorkflow(BaseWidget):
 
 	def load(self, data):
 		super(SimpleImageFilterWorkflow,self).load(data)
-		if data.get('image-filters', None):
-			for label, widget in self._imgfilters.value:
-				if label in data['image-filters']: widget.load(data['image-filters'][label])
+
 		if data.get('blobs-filters', None):
 			for label, widget in self._blobsfilters.value:
 				if label in data['blobs-filters']: widget.load(data['blobs-filters'][label])
-	
+		if data.get('image-filters', None):
+			for label, widget in self._imgfilters.value:
+				if label in data['image-filters']: widget.load(data['image-filters'][label])
+		
 	###########################################################################
 	### FUNCTIONS #############################################################
 	###########################################################################
@@ -83,29 +88,31 @@ class SimpleImageFilterWorkflow(BaseWidget):
 
 	def __defaultflows_changed_evt(self):		
 		if   self._defaultflows.value==1:
-
+			self._blobsflow = self._blobsfilters.value = [
+				('Find blobs', FindBlobs() ),
+				('Retrieve n blobs',BiggestsBlobs() ),
+			]
 			self._imgflow = self._imgfilters.value = [
 				( 'Adaptative threshold', AdaptativeThreshold() ),
 			]
+			
+
+			print '-',self._blobsfilters.value
+		
+		elif self._defaultflows.value==2:
 			self._blobsflow = self._blobsfilters.value = [
 				('Find blobs', FindBlobs() ),
 				('Retrieve n blobs',BiggestsBlobs() ),
 				('Order by position',OrderByPosition() ),
 				('Track path',TrackPath() )
 			]
-		
-		elif self._defaultflows.value==2:
-
 			self._imgflow = self._imgfilters.value = [
 				('Adaptative threshold', AdaptativeThreshold() ),
 				('Mask', PolygonsMask(video=self.filename)),
 			]
-			self._blobsflow = self._blobsfilters.value = [
-				('Find blobs', FindBlobs() ),
-				('Retrieve n blobs',BiggestsBlobs() ),
-				('Order by position',OrderByPosition() ),
-				('Track path',TrackPath() )
-			]
+			
+
+			print '+',self._blobsfilters.value
 
 	def __process_frame(self, frame):
 		
@@ -143,7 +150,10 @@ class SimpleImageFilterWorkflow(BaseWidget):
 		self._filename 		= value
 		self._player.value 	= value
 
-
+	def show(self):
+		super(SimpleImageFilterWorkflow, self).show()
+		self._blobsfilters.show()
+		self._blobsfilters.resizeRowsToContents()
 
 if __name__ == '__main__': 
 	pyforms.startApp(SimpleImageFilterWorkflow)
