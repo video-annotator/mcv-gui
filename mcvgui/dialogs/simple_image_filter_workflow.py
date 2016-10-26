@@ -95,9 +95,6 @@ class SimpleImageFilterWorkflow(BaseWidget):
 			self._imgflow = self._imgfilters.value = [
 				( 'Adaptative threshold', AdaptativeThreshold() ),
 			]
-			
-
-			print '-',self._blobsfilters.value
 		
 		elif self._defaultflows.value==2:
 			self._blobsflow = self._blobsfilters.value = [
@@ -112,7 +109,6 @@ class SimpleImageFilterWorkflow(BaseWidget):
 			]
 			
 
-			print '+',self._blobsfilters.value
 
 	def __process_frame(self, frame):
 		
