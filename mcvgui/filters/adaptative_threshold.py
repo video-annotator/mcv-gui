@@ -24,11 +24,11 @@ class AdaptativeThreshold(Class, BaseWidget):
             ('_param_adaptive_threshold_block_size','_param_adaptive_threshold_c')
         ]
 
-        self._param_adaptive_threshold_method.addItem('ADAPTIVE_THRESH_MEAN_C', cv2.ADAPTIVE_THRESH_MEAN_C)
-        self._param_adaptive_threshold_method.addItem('ADAPTIVE_THRESH_GAUSSIAN_C', cv2.ADAPTIVE_THRESH_GAUSSIAN_C)
+        self._param_adaptive_threshold_method.add_item('ADAPTIVE_THRESH_MEAN_C', cv2.ADAPTIVE_THRESH_MEAN_C)
+        self._param_adaptive_threshold_method.add_item('ADAPTIVE_THRESH_GAUSSIAN_C', cv2.ADAPTIVE_THRESH_GAUSSIAN_C)
 
-        self._param_adaptive_threshold_type.addItem('THRESH_BINARY', cv2.THRESH_BINARY)
-        self._param_adaptive_threshold_type.addItem('THRESH_BINARY_INV', cv2.THRESH_BINARY_INV)
+        self._param_adaptive_threshold_type.add_item('THRESH_BINARY', cv2.THRESH_BINARY)
+        self._param_adaptive_threshold_type.add_item('THRESH_BINARY_INV', cv2.THRESH_BINARY_INV)
 
     #####################################################################
     ### PROPERTIES ######################################################

@@ -16,11 +16,11 @@ class Mask(Class, BaseWidget):
         self._maskimg = ControlFile('Mask image')
         self._formset = ['_maskimg']
 
-        self._maskimg.changed = self.__maskimg_changed_evt
+        self._maskimg.changed_event = self.__maskimg_changed_event
 
         self._param_mask_img = None
 
-    def __maskimg_changed_evt(self):
+    def __maskimg_changed_event(self):
         try:
             img = cv2.imread(self._maskimg.value)
             if len(img.shape)>2: img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

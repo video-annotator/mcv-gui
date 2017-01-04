@@ -11,17 +11,17 @@ class PolygonsMask(Class, BaseWidget):
 		Class.__init__(self, **kwargs)
 
 		self._geo_window = GeometryManualDesigner('Geometry designer', parent=self)
-		self._geo_window.apply_evt = self.__polys_ready
+		self._geo_window.apply_event = self.__polys_ready
 		self._geo_window._video.hide()
 
-		self._geo_window._video.value = kwargs.get('video', None)
+		self._geo_window.video_capture = kwargs.get('video', '') if kwargs.get('video', '') is not None else ''
 
 		self.layout().setContentsMargins(10, 5, 10, 5)
 		self.setMinimumHeight(50)
 
 		self._draw_btn = ControlButton('Draw a mask')
 
-		self._draw_btn.value = self.__draw_btn_evt
+		self._draw_btn.value = self.__draw_btn_event
 
 	def __polys_ready(self):
 		self._param_polygons_polys  = self._geo_window.polygons
@@ -29,7 +29,7 @@ class PolygonsMask(Class, BaseWidget):
 		self._geo_window._player.stop()
 		self._geo_window.hide()
 
-	def __draw_btn_evt(self):
+	def __draw_btn_event(self):
 		self._geo_window.show()
 
 	def save(self, data):
@@ -50,7 +50,12 @@ class PolygonsMask(Class, BaseWidget):
 			self._param_polygons_polys = dataArray
 
 
+	@property	
+	def video(self): return self._geo_window.video_capture
+	@video.setter
+	def video(self, value):  self._geo_window.video_capture = value
+
 
 
 if __name__ == '__main__': 
-	pyforms.startApp(PolygonsMask)
+	pyforms.start_app(PolygonsMask)

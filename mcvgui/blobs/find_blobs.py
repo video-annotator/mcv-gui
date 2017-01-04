@@ -16,11 +16,11 @@ class FindBlobs(Class, BaseWidget):
 		self._area_range = ControlBoundingSlider('Filter by area', [100,90000], 0, 100000, horizontal=True)
 		self._formset = ['_area_range']
 
-		self._area_range.changed = self.__area_range_changed_evt
+		self._area_range.changed = self.__area_range_changed_event
 
 	#####################################################################
 	### EVENTS ##########################################################
 	#####################################################################
 
-	def __area_range_changed_evt(self):
+	def __area_range_changed_event(self):
 		self._param_findblobs_min_area, self._param_findblobs_max_area = self._area_range.value

@@ -1,0 +1,1 @@
+from pysettings import conf; conf+='mcvgui.settings'
