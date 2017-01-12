@@ -8,4 +8,7 @@ class OrderByPosition(Class, BaseWidget):
 		Class.__init__(self, **kwargs)
 
 		self.layout().setContentsMargins(10, 5, 10, 5)
-		self.setMinimumHeight(55)
+		self.setMinimumHeight(65)
+
+
+		self.formset = ['info:Order the blobs by their last position.']

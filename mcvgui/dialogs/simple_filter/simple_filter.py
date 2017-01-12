@@ -5,13 +5,7 @@ from pyforms.Controls import ControlPlayer
 from pyforms.Controls import ControlText
 from pyforms.Controls import ControlCombo
 
-from mcvgui.filters.adaptative_threshold import AdaptativeThreshold
-from mcvgui.masks.polygons_mask import PolygonsMask
-from mcvgui.blobs.find_blobs import FindBlobs
-from mcvgui.blobs.biggests_blobs import BiggestsBlobs
-from mcvgui.blobs.order_by_position import OrderByPosition
-from mcvgui.blobs.track_path import TrackPath
-from mcvgui.masks.path_mask import PathMask
+
 from pysettings import conf
 
 
@@ -28,7 +22,7 @@ class SimpleFilter(BaseWidget):
 		self._blobsflows 	= ControlCombo('Blobs workflows')
 		self._blobsfilters  = ControlList('Blobs filters')
 
-		self._formset = [
+		self.formset = [
 			('_player',
 			'||',
 			['_imageflows',
@@ -37,8 +31,13 @@ class SimpleFilter(BaseWidget):
 			'_blobsfilters'])
 		]
 
-		self.__load_default_imageflows()
-		self.__load_default_blobsflows()
+		self.formset = [
+			'_imageflows',
+			'_imgfilters',
+			'=',
+			('_player','||',['_blobsflows','_blobsfilters'])
+		]
+
 
 		self.load_order = ['_imageflows', '_blobsflows']
 
@@ -50,6 +49,7 @@ class SimpleFilter(BaseWidget):
 		
 		self.video_capture = video
 
+		self._pipelines = {}
 		#self.video_capture = cv2.VideoCapture('/home/ricardo/Downloads/GOPR1871_single cortado.mp4')
 
 	
@@ -99,50 +99,28 @@ class SimpleFilter(BaseWidget):
 	### INTERFACE FUNCTIONS ###################################################
 	###########################################################################
 
-	def __load_default_imageflows(self):
-		self._imageflows.add_item('Adaptative threshold', 1)
-		self._imageflows.add_item('Adaptative threshold + Mask', 2)
-		self._imageflows.add_item('Adaptative threshold + Mask the path', 3)
-		self.__imageflows_changed_event()
-
+	
 	def __load_default_blobsflows(self):
 		self._blobsflows.add_item('Find blobs + track path', 2)
 		self.__blobsflows_changed_event()
 
-	def __imageflows_changed_event(self):		
-		if   self._imageflows.value==1:
-		
-			self._imgfilters.value = [
-				( 'Adaptative threshold', 	AdaptativeThreshold() ),
-			]
-		
-		elif self._imageflows.value==2:
-			self._imgfilters.value = [
-				('Adaptative threshold', 	AdaptativeThreshold() 				),
-				('Mask', 					PolygonsMask(video=self.video_capture)	),
-			]
 
-		elif self._imageflows.value==3:
-			paths  = self._parent.paths if hasattr(self,'_parent') and hasattr(self._parent, 'paths') else []
-			radius = [30 for i in range(len(paths))]
 
-			mask_path = PathMask()
-			mask_path.mask_paths = paths
+
+	def __imageflows_changed_event(self):
+		workflow = []
+		for title, flow_filter in self._pipelines.get(self._imageflows.value, []):
+			workflow.append( (title, flow_filter() ) )
+		self._imgfilters.value = workflow
+
+
 			
-			self._imgfilters.value = [
-				('Adaptative threshold', 	AdaptativeThreshold() ),
-				('Mask the path', 			mask_path			  ),
-			]
-			
-	def __blobsflows_changed_event(self):		
-		if   self._blobsflows.value==2:
-			
-			self._blobsfilters.value = [
-				('Find blobs', 			FindBlobs() 		),
-				('Retrieve n blobs',	BiggestsBlobs() 	),
-				('Order by position',	OrderByPosition() 	),
-				('Track path',			TrackPath() 		)
-			]
+	def __blobsflows_changed_event(self):
+		workflow = []
+		for title, flow_filter in self._pipelines.get(self._blobsflows.value, []):
+			workflow.append( (title, flow_filter() ) )
+		self._blobsfilters.value = workflow
+
 
 
 
@@ -175,15 +153,37 @@ class SimpleFilter(BaseWidget):
 		return frame, filter_res
 		
 
+	def add_image_filters(self, filtername, pipeline):
+		first_filters = self._imageflows.value==None
+		self._imageflows.add_item(filtername)
+		self._pipelines[filtername] = pipeline
+		if first_filters: self.__imageflows_changed_event()
+
+	def add_blobs_filters(self, filtername, pipeline):
+		first_filters = self._blobsflows.value==None
+		self._blobsflows.add_item(filtername)
+		self._pipelines[filtername] = pipeline
+		if first_filters: self.__blobsflows_changed_event()
+
 
 	###########################################################################
 	### PROPERTIES ############################################################
 	###########################################################################
 
 	@property
+	def image_filters(self):
+		for name, f in self._imgfilters.value: yield f
+
+	@property
+	def blobs_filters(self):
+		for name, f in self._blobsfilters.value: yield f
+	
+
+
+	@property
 	def video_capture(self): return self._player.value
 	@video_capture.setter
-	def video_capture(self, value): 
+	def video_capture(self, value):
 		self._player.value 	= value
 		for name, f in self._imgfilters.value: 		f.video = value
 		for name, f in self._blobsfilters.value: 	f.video = value
@@ -192,6 +192,7 @@ class SimpleFilter(BaseWidget):
 		super(SimpleFilter, self).show()
 		self._blobsfilters.show()
 		self._blobsfilters.resizeRowsToContents()
+
 
 if __name__ == '__main__': 
 	pyforms.start_app(SimpleFilter)

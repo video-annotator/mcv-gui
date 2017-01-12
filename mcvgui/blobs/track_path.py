@@ -2,7 +2,6 @@ from pyforms import BaseWidget
 from mcvapi.blobs.track_path import TrackPath as Class
 
 
-
 class TrackPath(Class, BaseWidget):
 	
 	def __init__(self, **kwargs):
@@ -10,4 +9,8 @@ class TrackPath(Class, BaseWidget):
 		Class.__init__(self, **kwargs)
 
 		self.layout().setContentsMargins(10, 5, 10, 5)
-		self.setMinimumHeight(55)
+		self.setMinimumHeight(65)
+
+		
+
+		self.formset = ['info:Saves the blobs paths.']
