@@ -125,7 +125,7 @@ class SimpleFilter(BaseWidget):
 
 
 	def __process_frame(self, frame):
-		frame_index = self._player.video_index
+		frame_index = self._player.video_index-1
 		
 		data = frame
 		for name, f in self._imgfilters.value: 
