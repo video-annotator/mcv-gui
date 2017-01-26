@@ -10,7 +10,7 @@ class PolygonsMask(Class, BaseWidget):
 		BaseWidget.__init__(self, 'Polygons Mask')
 		Class.__init__(self, **kwargs)
 
-		self._geo_window = GeometryManualDesigner('Geometry designer', parent=self)
+		self._geo_window 			 = GeometryManualDesigner('Geometry designer', parent=self)
 		self._geo_window.apply_event = self.__polys_ready
 		self._geo_window._video.hide()
 
@@ -32,28 +32,10 @@ class PolygonsMask(Class, BaseWidget):
 	def __draw_btn_event(self):
 		self._geo_window.show()
 
-	def save(self, data):
-		super(PolygonsMask, self).save(data)
-		if self._param_polygons_polys is not None:
-			polys = self._param_polygons_polys
-			data['polygons'] = [str(polys.dtype), base64.b64encode(polys), polys.shape]
-		return data
-
-	def load(self, data):
-		super(PolygonsMask, self).load(data)
-		polys = data.get('polygons', None)
-		if polys:
-			
-			dataType  = np.dtype(polys[0])
-			dataArray = np.frombuffer(base64.decodestring(polys[1]), dataType)
-			dataArray = dataArray.reshape(polys[2])
-			self._param_polygons_polys = dataArray
-
-
 	@property	
 	def video(self): return self._geo_window.video_capture
 	@video.setter
-	def video(self, value):  self._geo_window.video_capture = value
+	def video(self, value): self._geo_window.video_capture = value
 
 
 

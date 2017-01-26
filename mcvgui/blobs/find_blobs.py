@@ -16,7 +16,7 @@ class FindBlobs(Class, BaseWidget):
 		self._area_range = ControlBoundingSlider('Filter by area', [100,90000], 0, 100000, horizontal=True)
 		self._formset = ['_area_range']
 
-		self._area_range.changed = self.__area_range_changed_event
+		self._area_range.changed_event = self.__area_range_changed_event
 
 	#####################################################################
 	### EVENTS ##########################################################

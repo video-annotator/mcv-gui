@@ -105,13 +105,11 @@ class SimpleFilter(BaseWidget):
 		self.__blobsflows_changed_event()
 
 
-
-
 	def __imageflows_changed_event(self):
 		workflow = []
 		for title, flow_filter in self._pipelines.get(self._imageflows.value, []):
 			workflow.append( (title, flow_filter() ) )
-		self._imgfilters.value = workflow
+		self.image_filters = workflow
 
 
 			
@@ -119,7 +117,9 @@ class SimpleFilter(BaseWidget):
 		workflow = []
 		for title, flow_filter in self._pipelines.get(self._blobsflows.value, []):
 			workflow.append( (title, flow_filter() ) )
-		self._blobsfilters.value = workflow
+		self.blobs_filters = workflow
+
+
 
 
 
@@ -173,10 +173,16 @@ class SimpleFilter(BaseWidget):
 	@property
 	def image_filters(self):
 		for name, f in self._imgfilters.value: yield f
+	@image_filters.setter
+	def image_filters(self, value): self._imgfilters.value = value
+
 
 	@property
 	def blobs_filters(self):
 		for name, f in self._blobsfilters.value: yield f
+	@blobs_filters.setter
+	def blobs_filters(self, value): self._blobsfilters.value = value
+	
 	
 
 
