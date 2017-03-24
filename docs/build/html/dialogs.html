@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dialogs &mdash; Modular computer vision GUI 0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Modular computer vision GUI 0 documentation" href="index.html"/>
+        <link rel="prev" title="Modular computer vision GUI" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Modular computer vision GUI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Dialogs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#filters-dialog">Filters dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api">API</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Modular computer vision GUI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Dialogs</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/dialogs.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dialogs">
+<h1>Dialogs<a class="headerlink" href="#dialogs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="filters-dialog">
+<h2>Filters dialog<a class="headerlink" href="#filters-dialog" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/simple-filter-dialog.png" src="_images/simple-filter-dialog.png" />
+</div>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mcvgui.dialogs.simple_filter.SimpleFilter">
+<em class="property">class </em><code class="descclassname">mcvgui.dialogs.simple_filter.</code><code class="descname">SimpleFilter</code><span class="sig-paren">(</span><em>parent=None</em>, <em>video=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mcvgui/dialogs/simple_filter/simple_filter.html#SimpleFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mcvgui.dialogs.simple_filter.SimpleFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>It implements a dialog that allow the user to choose several combinations of
+filters and apply them to a video.
+The player allow the user to pre visualize the result.</p>
+<dl class="method">
+<dt id="mcvgui.dialogs.simple_filter.SimpleFilter.add_blobs_filters">
+<code class="descname">add_blobs_filters</code><span class="sig-paren">(</span><em>filtername</em>, <em>pipeline</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mcvgui/dialogs/simple_filter/simple_filter.html#SimpleFilter.add_blobs_filters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mcvgui.dialogs.simple_filter.SimpleFilter.add_blobs_filters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a blob filter</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcvgui.dialogs.simple_filter.SimpleFilter.add_image_filters">
+<code class="descname">add_image_filters</code><span class="sig-paren">(</span><em>filtername</em>, <em>pipeline</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mcvgui/dialogs/simple_filter/simple_filter.html#SimpleFilter.add_image_filters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mcvgui.dialogs.simple_filter.SimpleFilter.add_image_filters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an image filter</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcvgui.dialogs.simple_filter.SimpleFilter.blobs_filters">
+<code class="descname">blobs_filters</code><a class="headerlink" href="#mcvgui.dialogs.simple_filter.SimpleFilter.blobs_filters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set and retrieve the selected list of blobs filters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcvgui.dialogs.simple_filter.SimpleFilter.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mcvgui/dialogs/simple_filter/simple_filter.html#SimpleFilter.clear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mcvgui.dialogs.simple_filter.SimpleFilter.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reinit all the fielters</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcvgui.dialogs.simple_filter.SimpleFilter.image_filters">
+<code class="descname">image_filters</code><a class="headerlink" href="#mcvgui.dialogs.simple_filter.SimpleFilter.image_filters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set and retrieve the selected list of image filters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mcvgui.dialogs.simple_filter.SimpleFilter.processflow">
+<code class="descname">processflow</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mcvgui/dialogs/simple_filter/simple_filter.html#SimpleFilter.processflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mcvgui.dialogs.simple_filter.SimpleFilter.processflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the selected workflow of filters.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mcvgui.dialogs.simple_filter.SimpleFilter.video_capture">
+<code class="descname">video_capture</code><a class="headerlink" href="#mcvgui.dialogs.simple_filter.SimpleFilter.video_capture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set and retrieve the video for previsualization.
+The value should be from type cv2.VideoCapture or a path to a video file.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Modular computer vision GUI" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Ricardo Ribeiro.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -4,12 +4,17 @@ from pyforms.Controls import ControlList
 from pyforms.Controls import ControlPlayer
 from pyforms.Controls import ControlText
 from pyforms.Controls import ControlCombo
-
+from mcvapi.mcvbase import MCVBase
 
 from pysettings import conf
 
 
-class SimpleFilter(BaseWidget):
+class SimpleFilter(BaseWidget, MCVBase):
+	"""
+	It implements a dialog that allow the user to choose several combinations of
+	filters and apply them to a video.
+	The player allow the user to pre visualize the result.
+	"""
 
 
 	def __init__(self, parent=None, video=None):
@@ -81,11 +86,17 @@ class SimpleFilter(BaseWidget):
 	###########################################################################
 	
 	def clear(self):
+		"""
+		Reinit all the filters
+		"""
 		for name, f in self._imgfilters.value: 		data = f.clear()
 		for name, f in self._blobsfilters.value: 	data = f.clear()
 		
 
 	def processflow(self, data):
+		"""
+		Apply the selected workflow of filters.
+		"""
 		frame_index = self._player.video_index
 		for name, f in self._imgfilters.value:
 			f.frame_index = frame_index
@@ -111,18 +122,12 @@ class SimpleFilter(BaseWidget):
 			workflow.append( (title, flow_filter() ) )
 		self.image_filters = workflow
 
-
-			
+		
 	def __blobsflows_changed_event(self):
 		workflow = []
 		for title, flow_filter in self._pipelines.get(self._blobsflows.value, []):
 			workflow.append( (title, flow_filter() ) )
 		self.blobs_filters = workflow
-
-
-
-
-
 
 	def __process_frame(self, frame):
 		frame_index = self._player.video_index-1
@@ -154,12 +159,18 @@ class SimpleFilter(BaseWidget):
 		
 
 	def add_image_filters(self, filtername, pipeline):
+		"""
+		Add an image filter
+		"""
 		first_filters = self._imageflows.value==None
 		self._imageflows.add_item(filtername)
 		self._pipelines[filtername] = pipeline
 		if first_filters: self.__imageflows_changed_event()
 
 	def add_blobs_filters(self, filtername, pipeline):
+		"""
+		Add a blob filter
+		"""
 		first_filters = self._blobsflows.value==None
 		self._blobsflows.add_item(filtername)
 		self._pipelines[filtername] = pipeline
@@ -172,6 +183,9 @@ class SimpleFilter(BaseWidget):
 
 	@property
 	def image_filters(self):
+		"""
+		Set and retrieve the selected list of image filters
+		"""
 		for name, f in self._imgfilters.value: yield f
 	@image_filters.setter
 	def image_filters(self, value): self._imgfilters.value = value
@@ -179,15 +193,21 @@ class SimpleFilter(BaseWidget):
 
 	@property
 	def blobs_filters(self):
+		"""
+		Set and retrieve the selected list of blobs filters
+		"""
 		for name, f in self._blobsfilters.value: yield f
 	@blobs_filters.setter
 	def blobs_filters(self, value): self._blobsfilters.value = value
 	
 	
-
-
 	@property
-	def video_capture(self): return self._player.value
+	def video_capture(self): 
+		"""
+		Set and retrieve the video for previsualization.
+		The value should be from type cv2.VideoCapture or a path to a video file.
+		"""
+		return self._player.value
 	@video_capture.setter
 	def video_capture(self, value):
 		self._player.value 	= value
