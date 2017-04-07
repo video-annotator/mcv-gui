@@ -145,7 +145,7 @@ class SimpleFilter(BaseWidget, MCVBase):
 
 		for i, blob in enumerate(data):
 			if blob is not None:
-				rgb_int = step*(i+1)
+				rgb_int = int(step*(i+1))
 				blue 	=  rgb_int & 255
 				green 	= (rgb_int >> 8) & 255
 				red 	= (rgb_int >> 16) & 255
