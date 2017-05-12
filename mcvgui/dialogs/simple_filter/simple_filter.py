@@ -89,21 +89,27 @@ class SimpleFilter(BaseWidget, MCVBase):
 		"""
 		Reinit all the filters
 		"""
+		self.frame_index = 0
 		for name, f in self._imgfilters.value: 		data = f.clear()
 		for name, f in self._blobsfilters.value: 	data = f.clear()
 		
 
-	def processflow(self, data):
+	def processflow(self, data, frame_index=None):
 		"""
 		Apply the selected workflow of filters.
 		"""
-		frame_index = self._player.video_index
+		if frame_index is None: frame_index = self.frame_index
+
 		for name, f in self._imgfilters.value:
 			f.frame_index = frame_index
 			data = f.process(data)
 		for name, f in self._blobsfilters.value: 	
 			f.frame_index = frame_index
 			data = f.process(data)
+
+		frame_index += 1
+		self.frame_index = frame_index
+
 		return data
 
 	###########################################################################
