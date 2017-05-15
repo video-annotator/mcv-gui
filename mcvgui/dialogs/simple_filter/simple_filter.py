@@ -28,21 +28,15 @@ class SimpleFilter(BaseWidget, MCVBase):
 		self._blobsfilters  = ControlList('Blobs filters')
 
 		self.formset = [
-			('_player',
-			'||',
-			['_imageflows',
-			'_imgfilters',
-			'_blobsflows',
-			'_blobsfilters'])
-		]
-
-		self.formset = [
-			'_imageflows',
-			'_imgfilters',
+			'_player',
 			'=',
-			('_player','||',['_blobsflows','_blobsfilters'])
+			[{
+				'a:Image filter':['_imageflows','_imgfilters'],
+				'b:Blobs filter':['_blobsflows','_blobsfilters']
+			}]
 		]
 
+	
 
 		self.load_order = ['_imageflows', '_blobsflows']
 
