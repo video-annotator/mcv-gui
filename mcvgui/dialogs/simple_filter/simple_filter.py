@@ -151,7 +151,7 @@ class SimpleFilter(BaseWidget, MCVBase):
 				red 	= (rgb_int >> 16) & 255
 				c = (blue, green, red)
 
-				blob.draw(frame, color=c)
+				#blob.draw(frame, color=c)
 				if blob.centroid:
 					cv2.putText(frame,str(i), blob.centroid, cv2.FONT_HERSHEY_SIMPLEX, 1, c)
 
