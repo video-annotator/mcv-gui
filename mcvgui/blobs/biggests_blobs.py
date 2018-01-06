@@ -13,12 +13,14 @@ class BiggestsBlobs(Class, BaseWidget):
 		self.layout().setContentsMargins(10, 5, 10, 5)
 		self.setMinimumHeight(55)
 
-		self._n_blobs = ControlSlider('Find n blobs', 1, 1, 10)
+		self._n_blobs = ControlSlider('Find n blobs', default=1, minimum=1, maximum=10)
 		self._formset = ['_n_blobs']
+
+		self._n_blobs.changed_event = self.__n_blobs_changed_evt
 
 	#####################################################################
 	### PROPERTIES ######################################################
 	#####################################################################
 
-	@property
-	def biggests_blobs_n(self): return self._n_blobs.value
+	def __n_blobs_changed_evt(self):
+		self._param_biggestsblobs_n = self._n_blobs.value
