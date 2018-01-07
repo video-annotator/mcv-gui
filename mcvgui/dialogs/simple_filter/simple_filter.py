@@ -36,7 +36,7 @@ class SimpleFilter(BaseWidget, MCVBase):
             }]
         ]
 
-        self.load_order = ['_imageflows', '_blobsflows']
+        self.load_order = ['_imageflows', '_blobsflows','_imgfilters','_blobsfilters']
 
         self._imgfilters.select_entire_row      = True
         self._blobsfilters.select_entire_row    = True
@@ -58,8 +58,8 @@ class SimpleFilter(BaseWidget, MCVBase):
         return data
 
     def load(self, data, **kwargs):
-        self._imgfilters.value:   f.load(data, **kwargs)
-        self._blobsfilters.value: f.load(data, **kwargs)
+        for n, f in self._imgfilters.value:   f.load(data, **kwargs)
+        for n, f in self._blobsfilters.value: f.load(data, **kwargs)
         
     ###########################################################################
     ### FUNCTIONS #############################################################
