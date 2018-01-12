@@ -14,10 +14,13 @@ class MorphologyExOpen(Class, BaseWidget):
 		self._use_morphologyexopen 				 = ControlCheckBox('Use MorphologyEx Open')
 		self._field_morphologyexopen_kernel_size = ControlSlider('Kernel size', default=self._param_morphologyexopen_kernel_size,  minimum=3, maximum=51)
 
-		
 
-		self.layout().setContentsMargins(10, 5, 10, 5)
-		self.setMinimumHeight(50)
+
+		try:
+			self.layout().setContentsMargins(10, 5, 10, 5)
+			self.setMinimumHeight(50)
+		except:
+			pass
 
 		
 		self._formset = [

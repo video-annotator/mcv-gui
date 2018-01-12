@@ -10,8 +10,11 @@ class Mask(Class, BaseWidget):
         BaseWidget.__init__(self, 'Mask')
         Class.__init__(self, **kwargs)
 
-        self.layout().setContentsMargins(10, 5, 10, 5)
-        self.setMinimumHeight(100)
+        try:
+            self.layout().setContentsMargins(10, 5, 10, 5)
+            self.setMinimumHeight(100)
+        except:
+            pass
 
         self._maskimg = ControlFile('Mask image')
         self._formset = ['_maskimg']

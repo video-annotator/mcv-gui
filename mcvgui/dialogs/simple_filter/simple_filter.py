@@ -9,7 +9,7 @@ from mcvapi.mcvbase import MCVBase
 from pysettings import conf
 
 
-class SimpleFilter(BaseWidget, MCVBase):
+class SimpleFilter(MCVBase, BaseWidget):
     """
     It implements a dialog that allow the user to choose several combinations of
     filters and apply them to a video.
@@ -100,10 +100,10 @@ class SimpleFilter(BaseWidget, MCVBase):
 
     def build_workflow_instance(self):
         # export the configured parameters
-        data = {}
+        data = {'load': True}
         for name, f in self._imgfilters.value: f.save(data)
         for name, f in self._blobsfilters.value: f.save(data)
-        
+
         # create the workflow class and import the configured parameters
         classes_list =  self.pipeline_classes()
         instance = type('ProcessingPipeline', tuple(classes_list), {})(**data)

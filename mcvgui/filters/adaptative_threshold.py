@@ -11,8 +11,12 @@ class AdaptativeThreshold(Class, BaseWidget):
 		BaseWidget.__init__(self, 'Adaptative threshold')
 		Class.__init__(self, **kwargs)
 
-		self.layout().setContentsMargins(10, 5, 10, 5)
-		self.setMinimumHeight(100)
+
+		try:
+			self.layout().setContentsMargins(10, 5, 10, 5)
+			self.setMinimumHeight(100)
+		except:
+			pass
 
 		self._field_adaptive_threshold_method       = ControlCombo('Method')
 		self._field_adaptive_threshold_type         = ControlCombo('Type')

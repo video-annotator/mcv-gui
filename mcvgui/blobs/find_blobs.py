@@ -10,9 +10,11 @@ class FindBlobs(Class, BaseWidget):
 		BaseWidget.__init__(self, 'Find blobs')
 		Class.__init__(self, **kwargs)
 
-		self.layout().setContentsMargins(10, 5, 10, 5)
-		self.setMinimumHeight(55)
-
+		try:
+			self.layout().setContentsMargins(10, 5, 10, 5)
+			self.setMinimumHeight(55)
+		except:
+			pass
 		self._area_range = ControlBoundingSlider('Filter by area', [100,90000], 0, 100000, horizontal=True)
 		self._formset = ['_area_range']
 
@@ -24,3 +26,4 @@ class FindBlobs(Class, BaseWidget):
 
 	def __area_range_changed_event(self):
 		self._param_findblobs_min_area, self._param_findblobs_max_area = self._area_range.value
+	

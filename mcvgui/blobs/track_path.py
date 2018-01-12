@@ -8,9 +8,11 @@ class TrackPath(Class, BaseWidget):
 		BaseWidget.__init__(self, 'Track path')
 		Class.__init__(self, **kwargs)
 
-		self.layout().setContentsMargins(10, 5, 10, 5)
-		self.setMinimumHeight(65)
 
-		
+		try:
+			self.layout().setContentsMargins(10, 5, 10, 5)
+			self.setMinimumHeight(65)
+		except:
+			pass		
 
 		self.formset = ['info:Saves the blobs paths.']

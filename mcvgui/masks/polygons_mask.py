@@ -16,8 +16,11 @@ class PolygonsMask(Class, BaseWidget):
 
 		self._geo_window.video_capture = kwargs.get('video', '') if kwargs.get('video', '') is not None else ''
 
-		self.layout().setContentsMargins(10, 5, 10, 5)
-		self.setMinimumHeight(50)
+		try:
+			self.layout().setContentsMargins(10, 5, 10, 5)
+			self.setMinimumHeight(50)
+		except:
+			pass
 
 		self._draw_btn = ControlButton('Draw a mask')
 

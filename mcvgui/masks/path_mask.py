@@ -10,8 +10,11 @@ class PathMask(Class, BaseWidget):
 		BaseWidget.__init__(self, 'Path mask')
 		Class.__init__(self, **kwargs)
 
-		self.layout().setContentsMargins(10, 5, 10, 5)
-		self.setMinimumHeight(105)
+		try:
+			self.layout().setContentsMargins(10, 5, 10, 5)
+			self.setMinimumHeight(105)
+		except:
+			pass
 
 		self._control_pathmask_radius  		 = ControlSlider('Mask radius', default=30,  minimum=1, maximum=600)
 		self._control_pathmask_sel_paths_btn = ControlButton('Select paths to filter')

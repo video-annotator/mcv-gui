@@ -10,8 +10,11 @@ class BiggestsBlobs(Class, BaseWidget):
 		BaseWidget.__init__(self, 'Biggests blobs')
 		Class.__init__(self, **kwargs)
 
-		self.layout().setContentsMargins(10, 5, 10, 5)
-		self.setMinimumHeight(55)
+		try:
+			self.layout().setContentsMargins(10, 5, 10, 5)
+			self.setMinimumHeight(55)
+		except:
+			pass
 
 		self._n_blobs = ControlSlider('Find n blobs', default=1, minimum=1, maximum=10)
 		self._formset = ['_n_blobs']

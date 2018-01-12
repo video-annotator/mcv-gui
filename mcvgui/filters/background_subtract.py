@@ -11,8 +11,12 @@ class BackgroundSubtract(Class, BaseWidget):
 		BaseWidget.__init__(self, 'Background subtract')
 		Class.__init__(self, **kwargs)
 
-		self.layout().setContentsMargins(10, 5, 10, 5)
-		self.setMinimumHeight(100)
+
+		try:
+			self.layout().setContentsMargins(10, 5, 10, 5)
+			self.setMinimumHeight(100)
+		except:
+			pass
 
 		self._field_background_subtract_threshold  = ControlSlider('Threshold', default=self._param_backgroundsubtract_threshold,  minimum=1, maximum=255)
 		

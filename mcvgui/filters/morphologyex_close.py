@@ -14,9 +14,12 @@ class MorphologyExClose(Class, BaseWidget):
 		self._use_morphologyexclose 			  = ControlCheckBox('Use MorphologyEx Close')
 		self._field_morphologyexclose_kernel_size = ControlSlider('Kernel size', default=self._param_morphologyexclose_kernel_size,  minimum=3, maximum=51)
 
-		
-		self.layout().setContentsMargins(10, 5, 10, 5)
-		self.setMinimumHeight(50)
+
+		try:
+			self.layout().setContentsMargins(10, 5, 10, 5)
+			self.setMinimumHeight(50)
+		except:
+			pass
 
 		
 		self._formset = [
