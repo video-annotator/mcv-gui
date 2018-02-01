@@ -1,6 +1,6 @@
 from pyforms import BaseWidget
-from pyforms.Controls import ControlSlider
-from pyforms.Controls import ControlButton
+from pyforms.controls import ControlSlider
+from pyforms.controls import ControlButton
 from mcvapi.masks.path_mask import PathMask as Class
 
 

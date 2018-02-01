@@ -1,6 +1,6 @@
 import pyforms, cv2, base64, numpy as np
 from pyforms import BaseWidget
-from pyforms.Controls import ControlButton
+from pyforms.controls import ControlButton
 from mcvapi.masks.polygons_mask import PolygonsMask as Class
 from geometry_designer.modules.geometry_manual_designer.GeometryManualDesigner import GeometryManualDesigner
 

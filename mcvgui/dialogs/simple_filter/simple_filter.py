@@ -1,9 +1,9 @@
 import pyforms, cv2
 from pyforms import BaseWidget
-from pyforms.Controls import ControlList
-from pyforms.Controls import ControlPlayer
-from pyforms.Controls import ControlText
-from pyforms.Controls import ControlCombo
+from pyforms.controls import ControlList
+from pyforms.controls import ControlPlayer
+from pyforms.controls import ControlText
+from pyforms.controls import ControlCombo
 from mcvapi.mcvbase import MCVBase
 
 from pysettings import conf

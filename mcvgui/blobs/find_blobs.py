@@ -1,6 +1,6 @@
 import pyforms, cv2
 from pyforms import BaseWidget
-from pyforms.Controls import ControlBoundingSlider
+from pyforms.controls import ControlBoundingSlider
 from mcvapi.blobs.find_blobs import FindBlobs as Class
 
 

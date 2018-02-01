@@ -1,6 +1,6 @@
 import pyforms, cv2
 from pyforms import BaseWidget
-from pyforms.Controls import ControlFile
+from pyforms.controls import ControlFile
 from mcvapi.masks.mask import Mask as Class
 
 

@@ -1,6 +1,6 @@
 import pyforms, cv2
 from pyforms import BaseWidget
-from pyforms.Controls import ControlSlider
+from pyforms.controls import ControlSlider
 from mcvapi.blobs.biggests_blobs import BiggestsBlobs as Class
 
 

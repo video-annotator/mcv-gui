@@ -1,7 +1,7 @@
 import pyforms, cv2, numpy as np
 from pyforms import BaseWidget
-from pyforms.Controls import ControlCombo
-from pyforms.Controls import ControlSlider
+from pyforms.controls import ControlCombo
+from pyforms.controls import ControlSlider
 #from mcvapi.filters.background_detector import BackgroundDetector as Class
 from mcvapi.filters.background_subtract import BackgroundSubtract as Class
 
