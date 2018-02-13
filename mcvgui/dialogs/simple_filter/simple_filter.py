@@ -6,7 +6,7 @@ from pyforms.controls import ControlText
 from pyforms.controls import ControlCombo
 from mcvapi.mcvbase import MCVBase
 
-from pysettings import conf
+from pyforms import conf
 
 
 class SimpleFilter(MCVBase, BaseWidget):
