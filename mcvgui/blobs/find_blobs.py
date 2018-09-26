@@ -15,7 +15,7 @@ class FindBlobs(Class, BaseWidget):
 			self.setMinimumHeight(55)
 		except:
 			pass
-		self._area_range = ControlBoundingSlider('Filter by area', [100,90000], 0, 100000, horizontal=True)
+		self._area_range = ControlBoundingSlider('Filter by area', default=[100,90000], minimum=0, maximum=100000, horizontal=True)
 		self._formset = ['_area_range']
 
 		self._area_range.changed_event = self.__area_range_changed_event
