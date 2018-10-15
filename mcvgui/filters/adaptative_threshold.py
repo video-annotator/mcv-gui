@@ -21,7 +21,7 @@ class AdaptativeThreshold(Class, BaseWidget):
 		self._field_adaptive_threshold_method       = ControlCombo('Method')
 		self._field_adaptive_threshold_type         = ControlCombo('Type')
 		self._field_adaptive_threshold_block_size   = ControlSlider('Block size', default=self._param_adaptivethreshold_block_size, minimum=3, maximum=2999)
-		self._field_adaptive_threshold_c            = ControlSlider('C', default=self._param_adaptivethreshold_c,  minimum=-255, maximum=255)
+		self._field_adaptive_threshold_c            = ControlSlider('C', default=self._param_adaptivethreshold_c,  minimum=0, maximum=500)
 
 		self._formset = [
 			('_field_adaptive_threshold_method','_field_adaptive_threshold_type'),
@@ -52,4 +52,4 @@ class AdaptativeThreshold(Class, BaseWidget):
 		self._param_adaptivethreshold_method 		= self._field_adaptive_threshold_method.value
 		self._param_adaptivethreshold_type 			= self._field_adaptive_threshold_type.value
 		self._param_adaptivethreshold_block_size 	= self._field_adaptive_threshold_block_size.value
-		self._param_adaptivethreshold_c 			= self._field_adaptive_threshold_c.value
+		self._param_adaptivethreshold_c 			= self._field_adaptive_threshold_c.value-255
