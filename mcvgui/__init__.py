@@ -1,1 +1,1 @@
-from pyforms import conf; conf+='mcvgui.settings'
+from confapp import conf; conf+='mcvgui.settings'

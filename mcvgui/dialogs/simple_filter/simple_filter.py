@@ -1,12 +1,12 @@
 import pyforms, cv2
-from pyforms import BaseWidget
+from pyforms.basewidget import BaseWidget
 from pyforms.controls import ControlList
 from pyforms.controls import ControlPlayer
 from pyforms.controls import ControlText
 from pyforms.controls import ControlCombo
 from mcvapi.mcvbase import MCVBase
 
-from pyforms import conf
+from confapp import conf
 
 
 class SimpleFilter(MCVBase, BaseWidget):
@@ -224,7 +224,7 @@ class SimpleFilter(MCVBase, BaseWidget):
     def show(self):
         super(SimpleFilter, self).show()
         self._blobsfilters.show()
-        self._blobsfilters.resizeRowsToContents()
+        self._blobsfilters.resize_rows_contents()
 
 
 if __name__ == '__main__': 

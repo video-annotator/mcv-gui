@@ -1,4 +1,4 @@
-from pyforms import BaseWidget
+from pyforms.basewidget import BaseWidget
 from mcvapi.blobs.track_path import TrackPath as Class
 
 

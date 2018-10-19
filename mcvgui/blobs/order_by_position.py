@@ -1,4 +1,4 @@
-from pyforms import BaseWidget
+from pyforms.basewidget import BaseWidget
 from mcvapi.blobs.order_by_position import OrderByPosition as Class
 
 class OrderByPosition(Class, BaseWidget):

@@ -1,5 +1,5 @@
 import pyforms, cv2
-from pyforms import BaseWidget
+from pyforms.basewidget import BaseWidget
 from pyforms.controls import ControlCombo
 from pyforms.controls import ControlSlider
 from mcvapi.filters.adaptative_threshold import AdaptativeThreshold as Class

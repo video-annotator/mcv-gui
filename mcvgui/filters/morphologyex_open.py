@@ -1,5 +1,5 @@
 import pyforms, cv2, numpy as np
-from pyforms import BaseWidget
+from pyforms.basewidget import BaseWidget
 from pyforms.controls import ControlCheckBox
 from pyforms.controls import ControlSlider
 #from mcvapi.filters.background_detector import BackgroundDetector as Class
