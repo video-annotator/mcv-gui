@@ -1,2 +1,12 @@
 *.pyc
 Modular_computer_vision_API_GUI\.egg-info/
+build/
+develop-eggs/
+dist/
+eggs/
+.eggs/
+sdist/
+var/
+wheels/
+*.egg-info/
+*.egg

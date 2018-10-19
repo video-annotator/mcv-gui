@@ -20,6 +20,6 @@ setup(
 	author  			='Ricardo Ribeiro',
 	author_email		='ricardojvr@gmail.com',
 	license 			='MIT',
-
+	url='https://bitbucket.org/fchampalimaud/mcv-gui',
 	packages=find_packages(),
 )
