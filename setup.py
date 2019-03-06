@@ -15,7 +15,7 @@ from setuptools import setup, find_packages
 setup(
 
 	name				='Modular computer vision API GUI',
-	version 			='0.0',
+	version 			=__version__,
 	description 		="""""",
 	author  			='Ricardo Ribeiro',
 	author_email		='ricardojvr@gmail.com',
